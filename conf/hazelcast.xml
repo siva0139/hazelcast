@@ -1,0 +1,32 @@
+<hazelcast xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.7.xsd"
+          xmlns="http://www.hazelcast.com/schema/config"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <group>
+       <name>hdfc-prod</name>
+       <password>8RGfCbTe</password>
+   </group>
+   <management-center enabled="true">http://10.109.3.227:8080/hazelcast-mancenter</management-center>
+   <network>
+       <port auto-increment="true" port-count="20">5701</port>
+       <outbound-ports>
+           <!--
+                           Allowed port range when connecting to other nodes.
+           0 or * means use system provided port.
+           -->
+           <ports>0</ports>
+       </outbound-ports>
+<!--       <join>
+                      <multicast enabled="false"/>
+           <tcp-ip enabled="true">
+               <member-list>
+                   <member>hazelcast</member>
+               </member-list>
+           </tcp-ip>
+           <aws enabled="false"/>
+       </join>
+-->
+   </network>
+   <lite-member enabled="false"/>
+
+</hazelcast>
+

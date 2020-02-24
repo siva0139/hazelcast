@@ -1,0 +1,26 @@
+version: '2'
+services:
+ hazelcast:
+   image: hazelcast/hazelcast
+   hostname: hdfcmf-staging-hazelcast
+   container_name: hdfcmf-staging-hazelcast
+   restart: always
+   #command: tail -F /dev/null
+   ports:
+     - 5701:5701
+   environment:
+     JAVA_OPTS: "-Dhazelcast.config=/opt/hazelcast/config_ext/hazelcast.xml"
+   volumes:
+       - ./conf:/opt/hazelcast/config_ext
+ mancenter:
+   image: hazelcast/management-center
+   hostname: hdfcmf-staging-mancenter
+   container_name: hdfcmf-staging-mancenter
+   restart: always
+   environment:
+     MC_INIT_CMD: "./mc-conf.sh create-user -H=/data -n=hdfc-prod -p=hdfc@371 -r=admin -v"
+   ports:
+     - 8080:8080
+volumes:
+    hazelcast-conf:
+        driver: local
