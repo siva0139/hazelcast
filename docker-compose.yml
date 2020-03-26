@@ -1,7 +1,7 @@
 version: '2'
 services:
  hazelcast:
-   image: hazelcast/hazelcast
+   image: hazelcast/hazelcast:3.12.5
    hostname: hdfcmf-prod-hazelcast
    container_name: hdfcmf-prod-hazelcast
    restart: always
@@ -13,14 +13,14 @@ services:
    volumes:
        - ./conf:/opt/hazelcast/config_ext
  mancenter:
-   image: hazelcast/management-center
+   image: hazelcast/management-center:3.12.8
    hostname: hdfcmf-prod-mancenter
    container_name: hdfcmf-prod-mancenter
    restart: always
    environment:
      MC_INIT_CMD: "./mc-conf.sh create-user -H=/data -n=hdfc-prod -p=hdfc@371 -r=admin -v"
    ports:
-     - 8080:8080
+     - 8081:8080
 volumes:
     hazelcast-conf:
         driver: local
