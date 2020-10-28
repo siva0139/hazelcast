@@ -18,7 +18,7 @@ services:
    container_name: siva-prod-mancenter
    restart: always
    environment:
-     MC_INIT_CMD: "./mc-conf.sh create-user -H=/data -n=hdfc-prod -p=hdfc@371 -r=admin -v"
+     MC_INIT_CMD: "./mc-conf.sh create-user -H=/data -n=siva-prod -p=siva@371 -r=admin -v"
    ports:
      - 8081:8080
 volumes:
